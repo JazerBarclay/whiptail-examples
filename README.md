@@ -1,6 +1,7 @@
 # Whiptail Examples
 
-*Please download/clone this repository and have a play around with the examples*
+*Please download/clone this repository and have a play around with the examples*<br>
+*Check the manual on https://linux.die.net/man/1/whiptail or run ``man whiptail`` from your terminal for all the juicy details*
 
 ## What is Whiptail?
 Whiptail is a program that displays information and input prompts which can be used within the terminal. It works as a drop-in alternative to the ``dialog`` command. I have included use cases as individual runnable scripts and a breakdown in this README document below.
