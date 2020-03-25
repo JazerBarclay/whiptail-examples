@@ -18,7 +18,7 @@ sudo pacman -S libnewt
 ```
 
 ## Download and use this repo
-```
+```sh
 # Download the repository
 git clone https://github.com/JazerBarclay/whiptail-examples.git
 
@@ -35,7 +35,7 @@ chmod +x check-list.sh input-box.sh message-box.sh progress-bar.sh yes-no.sh inf
 ### Info box
 The info box is a simple type of dialog box of text that displays to the user.
 
-```
+```sh
 whiptail --title "Example Title" --infobox "This is an example info box." 8 70
 ```
 
@@ -43,7 +43,7 @@ In this example, ``title`` is displayed at the top of the box . The ``infobox`` 
 
 There is a bug that makes the Info Box not display on some shells. If this is the case you can set the terminal emulation to something different and it will work.
 
-```
+```sh
 TERM=ansi whiptail --title "Example Title" --infobox "This is an example info box" 8 70
 ```
 
@@ -51,7 +51,7 @@ TERM=ansi whiptail --title "Example Title" --infobox "This is an example info bo
 ### Message box
 The message box is very similar to the info box however awaits the user to hit the OK button to continue past the prompt.
 
-```
+```sh
 whiptail --title "Example Title" --msgbox "This is an example message box. Press OK to continue." 8 70
 ```
 
@@ -59,7 +59,7 @@ whiptail --title "Example Title" --msgbox "This is an example message box. Press
 ### Yes/no box
 The yes/no input does what it says on the tin. It displays a prompt with the options of yes or no.
 
-```
+```sh
 # A simple if/then to do different things based on if yes or no is pressed
 
 if (whiptail --title "Example Title" --yesno "This is an example yes/no box." 8 70); then
@@ -73,7 +73,7 @@ fi
 ### Input box
 The input box adds an input field for text to be typed. If the user presses enter, the OK button is pressed. If the user selects Cancel then 
 
-```
+```sh
 COLOR=$(whiptail --inputbox "What is your favorite Color?" 8 78 Blue --title "Example Dialog" 3>&1 1>&2 2>&3)
 
 # The `3>&1 1>&2 2>&3` is a small trick to swap the stderr with stdout
@@ -94,7 +94,7 @@ echo "(Exit status was $exitstatus)"
 ### Text box
 A text box is similar to the message box however gets the body of text from a specified file. Add --scrolltext if the file is longer than the displayed window.
 
-```
+```sh
 echo "Welcome to Bash $BASH_VERSION" > test_textbox
 
 # filename height width
@@ -105,7 +105,7 @@ whiptail --textbox test_textbox 12 80
 ### Password box
 A password box is an input box with the characters displayed as asterisks to hide your input.
 
-```
+```sh
 PASSWORD=$(whiptail --passwordbox "Enter your new password" 8 70 --title "New Password" 3>&1 1>&2 2>&3)
 
 exitstatus=$?
@@ -116,14 +116,13 @@ else
 fi
 
 echo "(Exit status was $exitstatus)"
-
 ```
 
 
 ### Menus
 The menu dialog can show a list of items that the user can select a single item from. The additional value ``16`` beside the height and width is the total rows displayable before the menu becomes scrollable.
 
-```
+```sh
 whiptail --title "Menu example" --menu "Choose an option" 25 78 16 \
 "<-- Back" "Return to the main menu." \
 "Add User" "Add a user to the system." \
@@ -138,7 +137,7 @@ The values are a list of menu options in the format ``tag item``, where tag is t
 
 If you are presenting a very long menu and want to make best use of the available screen, you can calculate the best box size by.
 
-```
+```sh
 eval `resize`
 whiptail ... $LINES $COLUMNS $(( $LINES - 8 )) ...
 ```
@@ -147,7 +146,7 @@ whiptail ... $LINES $COLUMNS $(( $LINES - 8 )) ...
 ### Check list
 The check list dialog is a multi-selectable menu where a single or multiple items in the list can be selected
 
-```
+```sh
 whiptail --title "Check list example" --checklist \
 "Choose user's permissions" 20 78 4 \
 "NET_OUTBOUND" "Allow connections to other hosts" ON \
@@ -162,7 +161,7 @@ When the user confirms their selections, a list of the choices is printed to std
 ### Radio list
 A radio list is a dialog where the user can select one option from a list. The difference between a radio list and a menu is that the user selects an option (using the space bar in whiptail) and then confirms that choice by hitting OK.
 
-```
+```sh
 whiptail --title "Radio list example" --radiolist \
 "Choose user's permissions" 20 78 4 \
 "NET_OUTBOUND" "Allow connections to other hosts" ON \
@@ -177,7 +176,7 @@ whiptail --title "Radio list example" --radiolist \
 
 Also reads percent from stdin:
 
-```
+```bash
 #!/bin/bash
 {
     for ((i = 0 ; i <= 100 ; i+=5)); do
