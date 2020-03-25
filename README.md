@@ -55,6 +55,7 @@ The message box is very similar to the info box however awaits the user to hit t
 whiptail --title "Example Title" --msgbox "This is an example message box. Press OK to continue." 8 70
 ```
 
+
 ### Yes/no box
 The yes/no input does what it says on the tin. It displays a prompt with the options of yes or no.
 
@@ -74,9 +75,9 @@ The input box adds an input field for text to be typed. If the user presses ente
 
 ```
 COLOR=$(whiptail --inputbox "What is your favorite Color?" 8 78 Blue --title "Example Dialog" 3>&1 1>&2 2>&3)
+
 # The `3>&1 1>&2 2>&3` is a small trick to swap the stderr with stdout
 # Meaning instead of return the error code, it returns the value entered
-# A trick to swap stdout and stderr.
 
 # Now to check if the user pressed OK or Cancel
 exitstatus=$?
@@ -88,6 +89,7 @@ fi
 
 echo "(Exit status was $exitstatus)"
 ```
+
 
 ### Text box
 A text box is similar to the message box however gets the body of text from a specified file. Add --scrolltext if the file is longer than the displayed window.
@@ -141,6 +143,7 @@ eval `resize`
 whiptail ... $LINES $COLUMNS $(( $LINES - 8 )) ...
 ```
 
+
 ### Check list
 The check list dialog is a multi-selectable menu where a single or multiple items in the list can be selected
 
@@ -155,6 +158,7 @@ whiptail --title "Check list example" --checklist \
 
 When the user confirms their selections, a list of the choices is printed to stderr.
 
+
 ### Radio list
 A radio list is a dialog where the user can select one option from a list. The difference between a radio list and a menu is that the user selects an option (using the space bar in whiptail) and then confirms that choice by hitting OK.
 
@@ -166,6 +170,7 @@ whiptail --title "Radio list example" --radiolist \
 "LOCAL_MOUNT" "Allow mounting of local devices" OFF \
 "REMOTE_MOUNT" "Allow mounting of remote devices" OFF
 ```
+
 
 ### Progress gauge
 `Syntax: whiptail --gauge <text> <height> <width> [<percent>]`
